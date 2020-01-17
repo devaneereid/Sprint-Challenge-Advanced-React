@@ -8,9 +8,9 @@ export const ToggleDark = () => {
         setDarkMode(!darkMode);
     };
     return (
-        <div className="toggle-dark">
+        <div className="toggle-dark" data-testid="toggle-app">
             <button onClick={toggleMode} 
-                    className={darkMode ? 'toggle toggled' : 'toggle'}>
+                    className={darkMode ? 'toggle toggled' : 'toggle'} data-testid="dark-toggled">
                         Toggle Dark Mode</button>
         </div>
     );

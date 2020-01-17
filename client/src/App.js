@@ -24,11 +24,11 @@ class App extends Component {
         console.log('Error Found', err)
       }, [])
   }
-
+  
   render() {
     return (
       <div className="App">
-        <h1>Women's World Cup!</h1>
+        <h1 data-testid="soccer-header" className="header">Soccer</h1>
         <ToggleDark />
           <div>
             {this.state.players.map(value => (
