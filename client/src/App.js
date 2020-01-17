@@ -22,6 +22,7 @@ const DivStyles = styled.div`
   border: 1px solid lavender;
   padding: 10px;
   margin: 15px 100px;
+  border-radius: 20px;
 `;
 
 class App extends Component {

@@ -3,10 +3,11 @@ import {useDarkMode} from '../hooks/useDarkMode';
 import styled from 'styled-components';
 
 const Button = styled.button`
-    padding: 20px 60px;
+    padding: 15px 60px;
     border-radius: 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     background: aqua;
+    font-family: monospace;
 `;
 
 export const ToggleDark = () => {
