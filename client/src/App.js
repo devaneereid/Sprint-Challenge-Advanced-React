@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios';
-
+import {ToggleDark} from '../src/components/ToggleDark';
 
 class App extends Component {
   constructor(){
@@ -25,16 +25,16 @@ class App extends Component {
       }, [])
   }
 
-  
   render() {
     return (
       <div className="App">
         <h1>Women's World Cup!</h1>
+        <ToggleDark />
           <div>
             {this.state.players.map(value => (
               <div key={value.id}>
                 <h4>Name: {value.name}</h4>
-                <h5>Country: {value.country}</h5>
+                <p>Country: {value.country}</p>
               </div>
             ))}
           </div>
