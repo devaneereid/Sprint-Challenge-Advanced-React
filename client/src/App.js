@@ -1,26 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import axios from 'axios';
+import {ToggleDark} from '../src/components/ToggleDark';
+import styled from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const H1Styles = styled.h1`
+  font-family: monospace;
+  font-weight: 300;
+  font-size: 2.6rem;
+  color: hotpink;
+`;
+const NameStyles = styled.h4`
+  font-family: monospace;
+  text-decoration: underline;
+  font-size: 1.3rem;
+`;
+const Country = styled.p`
+  font-family: monospace;
+`;
+const DivStyles = styled.div`
+  border: 1px solid lavender;
+  padding: 10px;
+  margin: 15px 100px;
+  border-radius: 20px;
+`;
 
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      players: []
+    };
+  };
+
+  componentDidMount() {
+    axios
+      .get(`http://localhost:5000/api/players`)
+      .then(res => {
+        this.setState({
+          players: res.data
+        });
+        console.log(res)
+      })
+      .catch(err => {
+        console.log('Error Found', err)
+      }, [])
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <H1Styles data-testid="soccer-header" className="header">Soccer</H1Styles>
+          <ToggleDark />
+            <div>
+              {this.state.players.map(value => (
+                <DivStyles key={value.id}>
+                  <NameStyles>Name: {value.name}</NameStyles>
+                  <Country>Country: {value.country}</Country>
+                </DivStyles>
+              ))}
+            </div>
+      </div>
+    );
+  }
+};
 export default App;
